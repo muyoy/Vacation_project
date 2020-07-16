@@ -11,6 +11,7 @@ public class Player : MonoBehaviour
     Rigidbody2D player;
     SpriteRenderer character_flip;
     Animator ani;
+    public UISlider ui_hp_bar;
     
     public float move_speed;
     public float jump_power;
@@ -24,6 +25,7 @@ public class Player : MonoBehaviour
     float attack_cool;
 
     float speed;
+
     [SerializeField]
     private float hp_bar;
     public float Hp_bar
@@ -105,9 +107,9 @@ public class Player : MonoBehaviour
         if(other.gameObject.tag == "Trap")
         { 
             Hp_bar = hp_bar - 30.0f;
-            Debug.Log(hp_bar);
+            Debug.Log(hp_bar.ToString());
+            ui_hp_bar.value = hp_bar/100;
 
-            //Hp.value = hp_bar/100;
             StartCoroutine(HIT());
         }
     }
