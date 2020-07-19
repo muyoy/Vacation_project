@@ -202,6 +202,7 @@
     <None Include="Assets\NGUI\Resources\Shaders\Unlit - Transparent Packed 3.shader" />
     <None Include="Assets\NGUI\Resources\Shaders\Unlit - Transparent Masked 3.shader" />
     <None Include="Assets\NGUI\Resources\Shaders\Unlit - Transparent Colored (TextureClip).shader" />
+    <None Include="Assets\Font\Maple_Font.txt" />
     <None Include="Assets\NGUI\Resources\Shaders\Unlit - Transparent Masked.shader" />
     <None Include="Assets\NGUI\Resources\Shaders\Unlit - Premultiplied Colored 1.shader" />
     <None Include="Assets\NGUI\Resources\Shaders\Unlit - Transparent Colored (Packed) (TextureClip).shader" />
