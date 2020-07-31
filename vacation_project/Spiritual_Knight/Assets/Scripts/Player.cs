@@ -18,13 +18,13 @@ public class Player : MonoBehaviour
     public float jump_time;
     public float attack_cool_setting;
 
-    bool isGround;
-    bool isJumping;
-    bool isDmg;
-    float jump_time_counter;
-    float attack_cool;
+    public bool isGround;
+    private bool isJumping;
+    private bool isDmg;
+    private float jump_time_counter;
+    private float attack_cool;
 
-    float speed;
+    private float speed;
 
     [SerializeField]
     private float hp_bar;
@@ -114,6 +114,13 @@ public class Player : MonoBehaviour
         }
     }
     private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Ground")
+        {
+            isGround = true;
+        }
+    }
+    private void OnCollisionStay2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "Ground")
         {
