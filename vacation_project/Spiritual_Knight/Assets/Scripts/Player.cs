@@ -46,6 +46,12 @@ public class Player : MonoBehaviour
             player.WakeUp();
         }
 
+        if(hp_bar < 0)
+        {
+            ani.SetBool("Dead", true);
+            GetComponent<Player>().enabled = false;
+        }
+
         if (isGround == true && Input.GetKeyDown(KeyCode.Z))
         {
             isJumping = true;
@@ -78,6 +84,7 @@ public class Player : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.X) && attack_cool <= 0)
         {
+            ani.SetTrigger("Attack");
             Attack();
             attack_cool = attack_cool_setting;
         }
@@ -92,14 +99,12 @@ public class Player : MonoBehaviour
             attack = Instantiate(attack_sprite, attack_vector, Quaternion.identity);
             attack.GetComponent<SpriteRenderer>().flipX = true;
             attack.GetComponent<Rigidbody2D>().velocity = new Vector2(15.0f, 0.0f);
-            Destroy(attack, 2.0f);
         }
         else
         {
             attack = Instantiate(attack_sprite, attack_vector, Quaternion.identity);
             attack.GetComponent<SpriteRenderer>().flipX = false;
             attack.GetComponent<Rigidbody2D>().velocity = new Vector2(-15.0f, 0.0f);
-            Destroy(attack, 2.0f);
         }
     }
     private void OnTriggerEnter2D(Collider2D other)
@@ -144,10 +149,10 @@ public class Player : MonoBehaviour
         {
             color.a = 0;
             GetComponent<SpriteRenderer>().color = color;
-            yield return new WaitForSeconds(0.2f);
+            yield return new WaitForSeconds(0.1f);
             color.a = 1f;
             GetComponent<SpriteRenderer>().color = color;
-            yield return new WaitForSeconds(0.2f);
+            yield return new WaitForSeconds(0.1f);
             i++;
         }
 

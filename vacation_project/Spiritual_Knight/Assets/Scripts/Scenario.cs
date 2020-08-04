@@ -4,12 +4,13 @@ using UnityEngine;
 
 public class Scenario : MonoBehaviour
 {
-    public GameObject[] scr;
+    public GameObject[] scripts;
     private GameObject window;
     public int count;
     private void Awake()
     {
         window = GameObject.Find("UI Root").transform.Find("Window").gameObject;
+        
     }
     public void Scripts_Sequence_next_button()
     {
@@ -18,6 +19,6 @@ public class Scenario : MonoBehaviour
 
     public void Scripts_Sequence_skip_button()
     {
-        window.SetActive(false);
+        window.GetComponent<TweenAlpha>().enabled = true;
     }
 }
