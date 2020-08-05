@@ -13,7 +13,7 @@ public class Attack : MonoBehaviour
     {
         if(other.tag == "Ground" || other.tag=="wall")
         {
-            ani.SetBool("Destory", true);
+            ani.SetTrigger("Destory");
 
             GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
             
@@ -25,7 +25,7 @@ public class Attack : MonoBehaviour
     {
         if (other.tag == "Ground" || other.tag == "wall")
         {
-            ani.SetBool("Destory", true);
+            ani.SetTrigger("Destory");
 
             GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
 

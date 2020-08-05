@@ -20,7 +20,7 @@ public class Player : MonoBehaviour
 
     public bool isGround;
     private bool isJumping;
-    private bool isDmg;
+    private bool isDmg = true;
     private float jump_time_counter;
     private float attack_cool;
 
@@ -54,6 +54,7 @@ public class Player : MonoBehaviour
 
         if (isGround == true && Input.GetKeyDown(KeyCode.Z))
         {
+            ani.SetBool("Jump", true);
             isJumping = true;
             jump_time_counter = jump_time;
             player.velocity = new Vector2(player.velocity.x, jump_power);
@@ -62,11 +63,14 @@ public class Player : MonoBehaviour
         {
             if (jump_time_counter > 0)
             {
+                ani.SetBool("Jump", true);
                 player.velocity = new Vector2(player.velocity.x, jump_power);
                 jump_time_counter -= Time.deltaTime;
             }
             else if (jump_time_counter < 0)
+            {
                 isJumping = false;
+            }
         }
         if (Input.GetKeyUp(KeyCode.Z))
             isJumping = false;
@@ -82,7 +86,7 @@ public class Player : MonoBehaviour
         if (speed < 0)
             character_flip.flipX = false;
 
-        if (Input.GetKeyDown(KeyCode.X) && attack_cool <= 0)
+        if (Input.GetKeyDown(KeyCode.X) && attack_cool <= 0 && !isJumping)
         {
             ani.SetTrigger("Attack");
             Attack();
@@ -109,7 +113,7 @@ public class Player : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if(other.gameObject.tag == "Trap")
+        if(other.gameObject.tag == "Trap" && isDmg)
         { 
             Hp_bar = hp_bar - 30.0f;
             Debug.Log(hp_bar.ToString());
@@ -118,8 +122,21 @@ public class Player : MonoBehaviour
             StartCoroutine(HIT());
         }
     }
+
+    private void OnTriggerStay2D(Collider2D other)
+    {
+        if (other.gameObject.tag == "Trap" && isDmg)
+        {
+            Hp_bar = hp_bar - 30.0f;
+            Debug.Log(hp_bar.ToString());
+            ui_hp_bar.value = hp_bar / 100;
+
+            StartCoroutine(HIT());
+        }
+    }
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        ani.SetBool("Jump", false);
         if (collision.gameObject.tag == "Ground")
         {
             isGround = true;
@@ -158,6 +175,7 @@ public class Player : MonoBehaviour
 
         color.a = 1f;
         GetComponent<SpriteRenderer>().color = color;
+        yield return new WaitForSeconds(1.0f);
         isDmg = true;
     }
 }
