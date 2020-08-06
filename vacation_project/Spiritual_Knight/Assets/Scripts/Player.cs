@@ -86,10 +86,10 @@ public class Player : MonoBehaviour
         if (speed < 0)
             character_flip.flipX = false;
 
-        if (Input.GetKeyDown(KeyCode.X) && attack_cool <= 0 && !isJumping)
+        if (Input.GetKeyDown(KeyCode.X) && attack_cool <= 0 && isGround)
         {
-            ani.SetTrigger("Attack");
             Attack();
+            ani.SetTrigger("Attack");
             attack_cool = attack_cool_setting;
         }
         attack_cool -= Time.deltaTime;

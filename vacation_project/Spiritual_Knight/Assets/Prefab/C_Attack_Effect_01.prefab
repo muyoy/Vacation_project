@@ -14,7 +14,6 @@ GameObject:
   - component: {fileID: -6655174222960875507}
   - component: {fileID: 8333571200825128968}
   - component: {fileID: 7092743145965999273}
-  - component: {fileID: 4708129153645797647}
   m_Layer: 0
   m_Name: C_Attack_Effect_01
   m_TagString: Untagged
@@ -164,18 +163,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 22818a1d511efae4a8432aef3980b6a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!111 &4708129153645797647
-Animation:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5212746813941518972}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0

@@ -8,6 +8,12 @@ TagManager:
   - Trap
   - Scenario
   - wall
+  - Explain
+  - Main_Characher
+  - Glockinia
+  - King
+  - Villagers_A
+  - Villagers_B
   layers:
   - Default
   - TransparentFX
