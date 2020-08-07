@@ -199,6 +199,7 @@
     <Compile Include="Assets\NGUI\Scripts\UI\UIViewport.cs" />
     <Compile Include="Assets\Scripts\Attack.cs" />
     <Compile Include="Assets\Scripts\Camera_move.cs" />
+    <Compile Include="Assets\Scripts\Level_design.cs" />
     <Compile Include="Assets\Scripts\Player.cs" />
     <Compile Include="Assets\Scripts\Scenario.cs" />
     <Compile Include="Assets\Scripts\Trap_03_Attack.cs" />

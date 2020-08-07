@@ -7,6 +7,8 @@ public class Player : MonoBehaviour
     public GameObject attack_sprite;
 
     GameObject attack;
+    GameObject level_design_1;
+    GameObject[] script_space;
     Vector2 attack_vector;
     Rigidbody2D player;
     SpriteRenderer character_flip;
@@ -35,6 +37,8 @@ public class Player : MonoBehaviour
     }
     void Start()
     {
+        script_space = GameObject.FindGameObjectsWithTag("Level_Design_1");
+        level_design_1 = GameObject.Find("UI Root").transform.Find("Panel").gameObject;
         player = GetComponent<Rigidbody2D>();
         character_flip = GetComponent<SpriteRenderer>();
         ani = GetComponent<Animator>();
@@ -115,11 +119,18 @@ public class Player : MonoBehaviour
     {
         if(other.gameObject.tag == "Trap" && isDmg)
         { 
-            Hp_bar = hp_bar - 30.0f;
+            Hp_bar = hp_bar - 0.000001f;
             Debug.Log(hp_bar.ToString());
             ui_hp_bar.value = hp_bar/100;
 
             StartCoroutine(HIT());
+        }
+
+        if(other.gameObject.tag == "Level_Design_1")
+        {
+            GetComponent<Player>().enabled = false;
+            level_design_1.SetActive(true);
+            Destroy(script_space[0], 0.5f);
         }
     }
 
@@ -127,7 +138,7 @@ public class Player : MonoBehaviour
     {
         if (other.gameObject.tag == "Trap" && isDmg)
         {
-            Hp_bar = hp_bar - 30.0f;
+            Hp_bar = hp_bar - 0.000001f;
             Debug.Log(hp_bar.ToString());
             ui_hp_bar.value = hp_bar / 100;
 
