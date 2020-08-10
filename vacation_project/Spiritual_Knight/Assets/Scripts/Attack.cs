@@ -5,7 +5,7 @@ using UnityEngine;
 public class Attack : MonoBehaviour
 {
     Animator ani;
-    private void Start()
+    private void Awake()
     {
         ani = GetComponent<Animator>();
     }
@@ -13,6 +13,7 @@ public class Attack : MonoBehaviour
     {
         if(other.tag == "Ground" || other.tag=="wall")
         {
+            Debug.Log(other.gameObject.name);
             ani.SetTrigger("Destory");
 
             GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
@@ -25,6 +26,7 @@ public class Attack : MonoBehaviour
     {
         if (other.tag == "Ground" || other.tag == "wall")
         {
+            Debug.Log("stay");
             ani.SetTrigger("Destory");
 
             GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);

@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class Level_design : MonoBehaviour
 {
-    GameObject panel;
+    GameObject modal;
     GameObject player;
     private void Start()
     {
-        panel = GameObject.Find("UI Root").transform.Find("Panel").gameObject;
+        modal = GameObject.Find("UI Root").transform.Find("Modal").gameObject;
         player = GameObject.Find("C_Idle_1").gameObject;
     }
 
@@ -18,16 +18,7 @@ public class Level_design : MonoBehaviour
     }
     public void Skip_Button_Ingame()
     {
-        panel.GetComponent<UIPanel>().alpha = 0.0f;
+        modal.GetComponent<TweenAlpha>().enabled = true;
         player.GetComponent<Player>().enabled = true;
-    }
-
-    IEnumerator Alpha()
-    {
-        while(true)
-        {
-            panel.GetComponent<UIPanel>().alpha = 0.0f;
-            yield return null;
-        }
     }
 }
