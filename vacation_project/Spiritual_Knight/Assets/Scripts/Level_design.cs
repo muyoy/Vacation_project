@@ -11,12 +11,16 @@ public class Level_design : MonoBehaviour
         modal = GameObject.Find("UI Root").transform.Find("Modal").gameObject;
         player = GameObject.Find("C_Idle_1").gameObject;
     }
-
     public void Next_Button_Ingame()
     {
-
+        Fade_effect();
     }
     public void Skip_Button_Ingame()
+    {
+        Fade_effect();
+    }
+
+    private void Fade_effect()
     {
         modal.GetComponent<TweenAlpha>().enabled = true;
         player.GetComponent<Player>().enabled = true;

@@ -8,6 +8,7 @@ public class Player : MonoBehaviour
 
     GameObject attack;
     GameObject level_design_1;
+    GameObject level_design_2;
     Vector2 attack_vector;
     Rigidbody2D player;
     SpriteRenderer character_flip;
@@ -37,6 +38,7 @@ public class Player : MonoBehaviour
     void Start()
     {
         level_design_1 = GameObject.Find("UI Root").transform.Find("Modal").gameObject;
+        level_design_2 = GameObject.Find("UI Root").transform.Find("Modal_1").gameObject;
         player = GetComponent<Rigidbody2D>();
         character_flip = GetComponent<SpriteRenderer>();
         ani = GetComponent<Animator>();
@@ -128,7 +130,15 @@ public class Player : MonoBehaviour
         {
             GetComponent<Player>().enabled = false;
             level_design_1.SetActive(true);
+            Destroy(other, 1.0f);
+        }
 
+        if (other.gameObject.tag == "Level_Design_2")
+        {
+            player.velocity = new Vector2(0, 0);
+            GetComponent<Player>().enabled = false;
+            level_design_2.SetActive(true);
+            Destroy(other, 1.0f);
         }
     }
 

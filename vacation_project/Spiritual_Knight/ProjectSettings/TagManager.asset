@@ -15,6 +15,8 @@ TagManager:
   - Villagers_A
   - Villagers_B
   - Level_Design_1
+  - Level_Design_2
+  - Boss
   layers:
   - Default
   - TransparentFX
