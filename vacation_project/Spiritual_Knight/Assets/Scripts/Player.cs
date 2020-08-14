@@ -53,7 +53,7 @@ public class Player : MonoBehaviour
         if(hp_bar < 0)
         {
             ani.SetBool("Dead", true);
-            GetComponent<Player>().enabled = false;
+            enabled = false;
         }
 
         if (isGround == true && Input.GetKeyDown(KeyCode.Z))
@@ -128,7 +128,7 @@ public class Player : MonoBehaviour
 
         if(other.gameObject.tag == "Level_Design_1")
         {
-            GetComponent<Player>().enabled = false;
+            enabled = false;
             level_design_1.SetActive(true);
             Destroy(other, 1.0f);
         }
@@ -136,7 +136,7 @@ public class Player : MonoBehaviour
         if (other.gameObject.tag == "Level_Design_2")
         {
             player.velocity = new Vector2(0, 0);
-            GetComponent<Player>().enabled = false;
+            enabled = false;
             level_design_2.SetActive(true);
             Destroy(other, 1.0f);
         }

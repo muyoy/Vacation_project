@@ -17,6 +17,8 @@ TagManager:
   - Level_Design_1
   - Level_Design_2
   - Boss
+  - LV2
+  - Attack
   layers:
   - Default
   - TransparentFX
