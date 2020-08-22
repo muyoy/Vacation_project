@@ -5,6 +5,7 @@ using UnityEngine;
 public class Boss : MonoBehaviour
 {
     private Animator ani;
+    public UISlider ui_boss_hp_bar;
 
     [SerializeField]
     private float boss_hp;
@@ -24,6 +25,7 @@ public class Boss : MonoBehaviour
         {
             ani.SetTrigger("Hit");
             Boss_hp = boss_hp - 100.0f;
+            ui_boss_hp_bar.value = boss_hp / 200;
             if(Boss_hp <= 0)
             {
                 ani.SetBool("Dead", true);

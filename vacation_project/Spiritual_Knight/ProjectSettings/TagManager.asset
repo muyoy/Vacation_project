@@ -19,6 +19,8 @@ TagManager:
   - Boss
   - LV2
   - Attack
+  - DeadZone
+  - BossZone
   layers:
   - Default
   - TransparentFX

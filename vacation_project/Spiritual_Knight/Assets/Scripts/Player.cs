@@ -9,12 +9,15 @@ public class Player : MonoBehaviour
     GameObject attack;
     GameObject level_design_1;
     GameObject level_design_2;
+    GameObject boss;
+    GameObject boss_hp_ui;
     Vector2 attack_vector;
+    Vector2 respawn;
     Rigidbody2D player;
     SpriteRenderer character_flip;
     Animator ani;
     public UISlider ui_hp_bar;
-    
+
     public float move_speed;
     public float jump_power;
     public float jump_time;
@@ -39,9 +42,16 @@ public class Player : MonoBehaviour
     {
         level_design_1 = GameObject.Find("UI Root").transform.Find("Modal").gameObject;
         level_design_2 = GameObject.Find("UI Root").transform.Find("Modal_1").gameObject;
+        respawn = GameObject.Find("Respawn").transform.position;
+        boss = GameObject.FindGameObjectWithTag("Boss");
+        boss_hp_ui = GameObject.Find("UI Root").transform.Find("UI_Boss_hp_bar_frame").gameObject;
         player = GetComponent<Rigidbody2D>();
         character_flip = GetComponent<SpriteRenderer>();
         ani = GetComponent<Animator>();
+
+        boss_hp_ui.SetActive(false);
+        boss.SetActive(false);
+        
     }
     private void Update()
     {
@@ -50,10 +60,12 @@ public class Player : MonoBehaviour
             player.WakeUp();
         }
 
-        if(hp_bar < 0)
+        if(hp_bar <= 0)
         {
             ani.SetBool("Dead", true);
             enabled = false;
+            player.velocity = new Vector2(0, 0);
+            StartCoroutine(Respawn());
         }
 
         if (isGround == true && Input.GetKeyDown(KeyCode.Z))
@@ -140,6 +152,11 @@ public class Player : MonoBehaviour
             level_design_2.SetActive(true);
             Destroy(other, 1.0f);
         }
+        if (other.gameObject.tag == "BossZone")
+        {
+            boss.SetActive(true);
+            boss_hp_ui.SetActive(true);
+        }
     }
 
     private void OnTriggerStay2D(Collider2D other)
@@ -160,12 +177,22 @@ public class Player : MonoBehaviour
         {
             isGround = true;
         }
+        if (collision.gameObject.tag == "DeadZone")
+        {
+            Hp_bar = 0;
+            ui_hp_bar.value = hp_bar / 100;
+        }
     }
     private void OnCollisionStay2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "Ground")
         {
             isGround = true;
+        }
+        if (collision.gameObject.tag == "DeadZone")
+        {
+            Hp_bar = 0;
+            ui_hp_bar.value = hp_bar / 100;
         }
     }
     private void OnCollisionExit2D(Collision2D collision)
@@ -196,6 +223,17 @@ public class Player : MonoBehaviour
         GetComponent<SpriteRenderer>().color = color;
         yield return new WaitForSeconds(1.0f);
         isDmg = true;
+    }
+
+    IEnumerator Respawn()
+    {
+        yield return new WaitForSeconds(5.0f);
+        ani.SetBool("Dead", false);
+        enabled = true;
+        player.transform.position = respawn;
+        Hp_bar = hp_bar + 100;
+        ui_hp_bar.value = hp_bar / 100;
+        yield return null;
     }
 }
 

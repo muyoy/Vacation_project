@@ -11,7 +11,7 @@ public class Attack : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if(other.tag == "Ground" || other.tag=="wall")
+        if(other.tag == "Ground" || other.tag=="wall" || other.tag == "Boss")
         {
             ani.SetTrigger("Destory");
 
@@ -23,7 +23,7 @@ public class Attack : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D other)
     {
-        if (other.tag == "Ground" || other.tag == "wall")
+        if (other.tag == "Ground" || other.tag == "wall" || other.tag == "Boss")
         {
             ani.SetTrigger("Destory");
 

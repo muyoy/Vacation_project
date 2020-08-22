@@ -4,13 +4,13 @@ ScriptsOnlyBuild:
     - Attack
     - Boss
     - Camera_move
-    - GameManager
     - Level_design
     - Level_design_1
     - NGUIAtlas
     - NGUIFont
     - Player
     - Scenario
+    - Title
     - Trap_03_Attack
     - Trap_04_Attack
     - TweenAlpha
@@ -32,6 +32,7 @@ ScriptsOnlyBuild:
     - UnityEditor.U2D.Animation.BoneGizmo
     Unity.2D.Tilemap.Editor.dll:
     - UnityEditor.Tilemaps.GridBrush
+    - UnityEditor.Tilemaps.GridBrushEditor
     - UnityEditor.Tilemaps.GridPaintPaletteClipboard
     - UnityEditor.Tilemaps.GridPaintPaletteWindow
     - UnityEditor.Tilemaps.GridPaintingState
@@ -80,8 +81,6 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 54
       Script: {instanceID: 0}
-    - Class: 58
-      Script: {instanceID: 0}
     - Class: 60
       Script: {instanceID: 0}
     - Class: 61
@@ -91,6 +90,8 @@ ScriptsOnlyBuild:
     - Class: 65
       Script: {instanceID: 0}
     - Class: 66
+      Script: {instanceID: 0}
+    - Class: 70
       Script: {instanceID: 0}
     - Class: 74
       Script: {instanceID: 0}
@@ -106,8 +107,6 @@ ScriptsOnlyBuild:
       Script: {instanceID: 644}
     - Class: 114
       Script: {instanceID: 11350}
-    - Class: 114
-      Script: {instanceID: 11766}
     - Class: 114
       Script: {instanceID: 12218}
     - Class: 114
@@ -215,6 +214,51 @@ ScriptsOnlyBuild:
       Script: {instanceID: 14896}
     - Class: 114
       Script: {instanceID: 15108}
+    - Class: 115
+      Script: {instanceID: 0}
+    - Class: 157
+      Script: {instanceID: 0}
+    - Class: 196
+      Script: {instanceID: 0}
+    Assets/Scenes/Title.unity:
+    - Class: 1
+      Script: {instanceID: 0}
+    - Class: 4
+      Script: {instanceID: 0}
+    - Class: 20
+      Script: {instanceID: 0}
+    - Class: 21
+      Script: {instanceID: 0}
+    - Class: 28
+      Script: {instanceID: 0}
+    - Class: 48
+      Script: {instanceID: 0}
+    - Class: 54
+      Script: {instanceID: 0}
+    - Class: 65
+      Script: {instanceID: 0}
+    - Class: 81
+      Script: {instanceID: 0}
+    - Class: 104
+      Script: {instanceID: 0}
+    - Class: 114
+      Script: {instanceID: 11350}
+    - Class: 114
+      Script: {instanceID: 12236}
+    - Class: 114
+      Script: {instanceID: 12254}
+    - Class: 114
+      Script: {instanceID: 12832}
+    - Class: 114
+      Script: {instanceID: 13154}
+    - Class: 114
+      Script: {instanceID: 14208}
+    - Class: 114
+      Script: {instanceID: 14896}
+    - Class: 114
+      Script: {instanceID: 15108}
+    - Class: 114
+      Script: {instanceID: 33018}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 157
@@ -734,7 +778,7 @@ ScriptsOnlyBuild:
     className: TweenPosition
   - hash:
       serializedVersion: 2
-      Hash: 1a84701f5511d97ca535fc150d10364e
+      Hash: a99f5075189d2303f95abbe920a920de
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Boss
@@ -1686,8 +1730,15 @@ ScriptsOnlyBuild:
     assemblyName: Unity.Timeline.dll
     namespaceName: UnityEngine.Timeline
     className: PlayableTrack
+  - hash:
+      serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: Title
   platform: 5
   scenePathNames:
+  - Assets/Scenes/Title.unity
   - Assets/Scenes/ScenarioScene.unity
   - Assets/Scenes/InGameScene.unity
   playerPath: C:/Users/jy664/Desktop/Build/Spiritual_Knight.exe
