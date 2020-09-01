@@ -33,8 +33,7 @@ public class Scenario : MonoBehaviour
         count++;
         if (count >= scripts.Length)
         {
-            window.GetComponent<TweenAlpha>().enabled = true;
-            SceneManager.LoadScene("InGameScene");
+            SceneChange();
             return;
         }
         else
@@ -86,7 +85,13 @@ public class Scenario : MonoBehaviour
 
     public void Scripts_Sequence_skip_button()
     {
+        SceneChange();
+    }
+
+    private void SceneChange()
+    {
         window.GetComponent<TweenAlpha>().enabled = true;
-        SceneManager.LoadScene("InGameScene");
+        SceneLoad.LoadSceneName("InGameScene");
+        SceneManager.LoadScene("Loading");
     }
 }
