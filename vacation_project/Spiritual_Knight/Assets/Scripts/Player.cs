@@ -22,8 +22,10 @@ public class Player : MonoBehaviour
     public float jump_power;
     public float jump_time;
     public float attack_cool_setting;
+    public float full_hp; 
+    public static float attack_dmg = 10;
 
-    private bool isGround;
+    public static bool isGround;
     private bool isJumping;
     private bool isDmg = true;
     private float jump_time_counter;
@@ -32,8 +34,8 @@ public class Player : MonoBehaviour
     private float speed;
 
     [SerializeField]
-    private float hp_bar;
-    public float Hp_bar
+    private static float hp_bar;
+    public static float Hp_bar
     {
         get { return hp_bar; }
         set { hp_bar = value; }
@@ -51,7 +53,7 @@ public class Player : MonoBehaviour
 
         boss_hp_ui.SetActive(false);
         boss.SetActive(false);
-        
+        Hp_bar = full_hp;
     }
     private void Update()
     {
@@ -90,6 +92,7 @@ public class Player : MonoBehaviour
         }
         if (Input.GetKeyUp(KeyCode.Z))
             isJumping = false;
+        ui_hp_bar.value = hp_bar / full_hp;
     }
     private void FixedUpdate()
     {
@@ -131,10 +134,7 @@ public class Player : MonoBehaviour
     {
         if(other.gameObject.tag == "Trap" && isDmg)
         { 
-            Hp_bar = hp_bar - 0.000001f;
-            Debug.Log(hp_bar.ToString());
-            ui_hp_bar.value = hp_bar/100;
-
+            Hp_bar = hp_bar - 3.0f;
             StartCoroutine(HIT());
         }
 
@@ -163,10 +163,7 @@ public class Player : MonoBehaviour
     {
         if (other.gameObject.tag == "Trap" && isDmg)
         {
-            Hp_bar = hp_bar - 0.000001f;
-            Debug.Log(hp_bar.ToString());
-            ui_hp_bar.value = hp_bar / 100;
-
+            Hp_bar = hp_bar - 3.0f;
             StartCoroutine(HIT());
         }
     }
@@ -180,7 +177,7 @@ public class Player : MonoBehaviour
         if (collision.gameObject.tag == "DeadZone")
         {
             Hp_bar = 0;
-            ui_hp_bar.value = hp_bar / 100;
+            ui_hp_bar.value = hp_bar / full_hp;
         }
     }
     private void OnCollisionStay2D(Collision2D collision)
@@ -192,7 +189,6 @@ public class Player : MonoBehaviour
         if (collision.gameObject.tag == "DeadZone")
         {
             Hp_bar = 0;
-            ui_hp_bar.value = hp_bar / 100;
         }
     }
     private void OnCollisionExit2D(Collision2D collision)
@@ -231,8 +227,7 @@ public class Player : MonoBehaviour
         ani.SetBool("Dead", false);
         enabled = true;
         player.transform.position = respawn;
-        Hp_bar = hp_bar + 100;
-        ui_hp_bar.value = hp_bar / 100;
+        Hp_bar = hp_bar + full_hp;
         yield return null;
     }
 }
